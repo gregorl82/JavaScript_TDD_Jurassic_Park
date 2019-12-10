@@ -56,4 +56,20 @@ Park.prototype.removeDinosaurBySpecies = function(species){
   this.dinosaurCollection = this.dinosaurCollection.filter(element => element.species !== species)
 }
 
+Park.prototype.getNumbersByDiet = function(){
+  let carnivore = 0;
+  let herbivore = 0;
+  let omnivore = 0;
+  for (dinosaur of this.dinosaurCollection) {
+    if (dinosaur.diet == "carnivore") {
+      carnivore++;
+    } else if (dinosaur.diet == "herbivore") {
+      herbivore++;
+    } else {
+      omnivore++;
+    }
+  }
+  return {'carnivore': carnivore, 'herbivore': herbivore, 'omnivore': omnivore}
+}
+
 module.exports = Park
