@@ -15,13 +15,23 @@ Park.prototype.removeDinosaur = function(dinosaur){
 }
 
 Park.prototype.mostVisitedDinosaur = function(){
-  mostVisited = this.dinosaurCollection[0];
+  let mostVisited = this.dinosaurCollection[0];
   for (dinosaur of this.dinosaurCollection) {
     if (dinosaur.guestsAttractedPerDay > mostVisited.guestsAttractedPerDay) {
       mostVisited = dinosaur;
     }
   }
   return mostVisited;
+}
+
+Park.prototype.findDinosaursBySpecies = function(species){
+  let foundDinosaurs = []
+  for (dinosaur of this.dinosaurCollection) {
+    if (dinosaur.species === species){
+      foundDinosaurs.push(dinosaur);
+    }
+  }
+  return foundDinosaurs;
 }
 
 module.exports = Park

@@ -9,6 +9,7 @@ describe('Park', function() {
   let dinosaur2;
   let dinosaur3;
   let dinosaur4;
+  let dinosaur5;
 
   beforeEach(function () {
     park = new Park("Jurassic Park", 33.50);
@@ -16,6 +17,7 @@ describe('Park', function() {
     dinosaur2 = new Dinosaur("Triceratops", "herbivore", 2800);
     dinosaur3 = new Dinosaur("Ornithomimus", "omnivore", 1200);
     dinosaur4 = new Dinosaur("Brachiosaurus", "herbivore", 5025);
+    dinosaur5 = new Dinosaur("Tyrannosaurus", "carnivore", 4200);
   })
 
   it('should have a name', function(){
@@ -57,7 +59,15 @@ describe('Park', function() {
     assert.strictEqual(actual, dinosaur4);
   });
 
-  it('should be able to find all dinosaurs of a particular species');
+  it('should be able to find all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    park.addDinosaur(dinosaur4);
+    park.addDinosaur(dinosaur5);
+    const actual = park.findDinosaursBySpecies("Tyrannosaurus");
+    assert.deepStrictEqual(actual, [dinosaur1, dinosaur5]);
+  });
 
   it('should be able to calculate the total number of visitors per day');
 
