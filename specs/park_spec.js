@@ -12,7 +12,7 @@ describe('Park', function() {
   let dinosaur5;
 
   beforeEach(function () {
-    park = new Park("Jurassic Park", 33.50);
+    park = new Park("Jurassic Park", 33);
     dinosaur1 = new Dinosaur("Tyrannosaurus", "carnivore", 4500);
     dinosaur2 = new Dinosaur("Triceratops", "herbivore", 2800);
     dinosaur3 = new Dinosaur("Ornithomimus", "omnivore", 1200);
@@ -27,7 +27,7 @@ describe('Park', function() {
 
   it('should have a ticket price', function(){
     const actual = park.ticketPrice;
-    assert.strictEqual(actual, 33.50);
+    assert.strictEqual(actual, 33);
   });
 
   it('should have a collection of dinosaurs', function(){
@@ -78,8 +78,22 @@ describe('Park', function() {
     assert.strictEqual(actual, 13525);
   });
 
-  it('should be able to calculate the total number of visitors per year');
+  it('should be able to calculate the total number of visitors per year', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    park.addDinosaur(dinosaur4);
+    const actual = park.numberOfVisitorsPerYear();
+    assert.strictEqual(actual, 4936625)
+  });
 
-  it('should be able to calculate total revenue for one year');
+  it('should be able to calculate total revenue for one year', function(){
+    park.addDinosaur(dinosaur1);
+    park.addDinosaur(dinosaur2);
+    park.addDinosaur(dinosaur3);
+    park.addDinosaur(dinosaur4);
+    const actual = park.annualRevenue()
+    assert.strictEqual(actual, 162908625)
+  });
 
 });
