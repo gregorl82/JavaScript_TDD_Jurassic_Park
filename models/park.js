@@ -6,4 +6,12 @@ const Park = function(name, ticketPrice){
 
 }
 
+Park.prototype.addDinosaur = function(dinosaur){
+  this.dinosaurCollection.push(dinosaur);
+}
+
+Park.prototype.removeDinosaur = function(dinosaur){
+  this.dinosaurCollection = this.dinosaurCollection.filter(element => element !== dinosaur);
+}
+
 module.exports = Park
